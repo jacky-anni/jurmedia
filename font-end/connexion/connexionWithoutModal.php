@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html lang="en"  >
 <?php include('admin/class/Participant.php'); ?>
-<?php include('admin/class/Participant_Pol.php'); ?>
 <title>Connexion</title>
 <body class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-topbar c-layout-header-topbar-collapse">
 <!-- BEGIN: HEADER -->

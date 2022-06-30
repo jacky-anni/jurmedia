@@ -8,7 +8,7 @@
 	<div class="c-page-title c-pull-left">
 		<h5 class="c-font-uppercase c-font-bold">Bienvenue <?= $_SESSION['nom'] ?></h5>
 		<ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-			<li><a href="javascript:;" data-toggle="modal" data-target=".bs-example-modal-lg" style="color:black;"> <i class="fa fa-whatsapp"></i> Interegrez le group de la formation</a></li>  		
+			<li><a href="https://chat.whatsapp.com/IniQDzWz7q26VmvH3pEG1j" target="_blank" style="color:black;"> <i class="fa fa-whatsapp"></i> Interegrez le group de la formation</a></li>  		
 		</ul>
 	</div>
 	</div>

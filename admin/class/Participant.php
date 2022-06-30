@@ -253,15 +253,15 @@ class Participant
 				    </table>
 				</body>";
 				// envoyer email
-				echo $Msg;
-		// $SendMessage = mail($user->email, $Subject, $Msg, $headers);
-		// if ($SendMessage == true) {
-		// 	$url = $_SERVER['REQUEST_URI'];
-		// 	Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
-		// 	echo "<script>window.location ='$url';</script>";
-		// } else {
-		// 	echo "";
-		// }
+				// echo $Msg;
+		$SendMessage = mail($user->email, $Subject, $Msg, $headers);
+		if ($SendMessage == true) {
+			$url = $_SERVER['REQUEST_URI'];
+			Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
+			echo "<script>window.location ='$url';</script>";
+		} else {
+			echo "";
+		}
 	}
 
 		// modifier le mot de passe
@@ -397,20 +397,20 @@ class Participant
 			$headers = 'MIME-Version: 1.0' . "\r\n";
 			$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 
-			echo $Msg;
+			// echo $Msg;
 					
 			// le message
 			//envoyer email
-			// $SendMessage = mail($participant->email, $Subject, $Msg, $headers);
-			// if ($SendMessage == true) {
-			// 	$url = $_SERVER['REQUEST_URI'];
-			// 	echo "<script>window.location ='$url';</script>";
-			// } else {
-			// 	echo "";
-			// }
+			$SendMessage = mail($participant->email, $Subject, $Msg, $headers);
+			if ($SendMessage == true) {
+				$url = $_SERVER['REQUEST_URI'];
+				echo "<script>window.location ='$url';</script>";
+			} else {
+				echo "";
+			}
 
-			// $url = $_SERVER['REQUEST_URI'];
-			// echo "<script>window.location ='$url';</script>";
+			$url = $_SERVER['REQUEST_URI'];
+			echo "<script>window.location ='$url';</script>";
 
 		} else {
 			$url = $_SERVER['REQUEST_URI'];

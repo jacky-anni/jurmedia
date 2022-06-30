@@ -54,7 +54,7 @@
 					
 					<div class="tab-pane" id="blog_popular_posts">
 			    		<ul class="c-content-recent-posts-1">
-			    		 <?php if ($module_passe == $module_total) : ?>
+			    		 <?php if ($module_passe == $module_total && $module_total >1) : ?>
 			    			<li>
 			    				<div class="c-post">
 			    					<b> <i class="fa fa-certificate"></i> Certificat de réussite </b>

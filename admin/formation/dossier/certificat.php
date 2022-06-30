@@ -49,16 +49,16 @@ class MyPdf extends FPDF
             $formation = iconv("UTF-8", "CP1250//TRANSLIT", $formation->titre);
             $participant_ = iconv("UTF-8", "CP1250//TRANSLIT", $participant->nom_complet);
 
-            
 
-            $text = utf8_decode("Pour avoir complété avec succès le programme de formation « ").   $formation  .utf8_decode(" » offert en ligne par la JURIMEDIA du $date_debut au $date_fin");
+
+            $text = utf8_decode("Pour avoir complété avec succès le séminaire de formation sur le thème « ") . $formation . utf8_decode(" » offert en ligne par la JURIMEDIA du $date_debut au $date_fin");
 
             // $this->SetTextColor(249, 96, 52);
             
             // $text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit,\n\n sed do eiusmod tempor incididunt ";
             $this->SetFont('times', '', 14);
             $this->SetTextColor(0, 0, 0);
-            if($participant->sexe=="Homme"){$statut = "Monsieur";}else{$statut = "Madame";}
+            if($participant->sexe=="Homme"){$statut = "monsieur";}else{$statut = "madame";}
             $this->Cell(0, 114, '' . utf8_decode("Décerné à ".$statut), 0, 0, 'C');
             $this->SetFont('times', 'B', 18);
             $this->ln(10);
@@ -71,7 +71,7 @@ class MyPdf extends FPDF
             $this->Multicell(250,8,$text,4,"C"); 
             $this->ln(10);
             $this->SetFont('times', 'I', 14);
-            $this->Multicell(250,13,"Fait au Cap-Haitien, le  $date_final ",4,"C"); 
+            $this->Multicell(250,13, utf8_decode ("Fait à Cap-Haitien, le  $date_final "),4,"C"); 
             $this->Ln(10);
             
         } else {
