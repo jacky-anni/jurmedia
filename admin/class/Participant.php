@@ -249,8 +249,7 @@ class Participant
 				// envoyer email
 				// echo $Msg;
 
-		require_once "Mail.php";
-
+	
 		$from = "Sandra Sender <sender@example.com>";
 		$to = $user->email;
 		$subject = "Hi!";
