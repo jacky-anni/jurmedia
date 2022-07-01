@@ -177,6 +177,12 @@ class Participant
 		$org = Query::affiche('organisation', 1, 'id');
 			// token
 		$token = sha1($user->email) . sha1($user->id);
+		// $token = sha1($user->email) . $user->mdp;
+			// sujet de l'email
+		$Subject = "Reinitialisation de mot de passe";
+			// outil de configuration
+		$headers = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 		$link_mail = "$link_menu/reset-password/$token/$user->id/edit";
 	        // le message
 		$Msg = "
@@ -248,52 +254,14 @@ class Participant
 				</body>";
 				// envoyer email
 				// echo $Msg;
-
-		require_once "Mail.php";
-
-		$from = "Sandra Sender <sender@example.com>";
-		$to = $user->email;
-		$subject = "Hi!";
-		$body = "Hi,\n\nHow are you?";
-
-		$host = "mocha3035.mochahost.com";
-		$username = "team@jurimedia.org";
-		$password = "jurimedia2022";
-
-		$headers = array(
-			'From' => $from,
-			'To' => $to,
-			'Subject' => $subject
-		);
-		$smtp = Mail::factory(
-			'smtp',
-			array(
-				'host' => $host,
-				'auth' => true,
-				'username' => $username,
-				'password' => $password
-			)
-		);
-
-		$mail = $smtp->send($to, $headers, $body);
-
-		if (PEAR::isError($mail)) {
-			echo ("<p>" . $mail->getMessage() . "</p>");
+		$SendMessage = mail($user->email, $Subject, $Msg, $headers);
+		if ($SendMessage == true) {
+			$url = $_SERVER['REQUEST_URI'];
+			Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
+			echo "<script>window.location ='$url';</script>";
 		} else {
-			echo ("<p>Message successfully sent!</p>");
+			echo "";
 		}
-
-
-
-
-		// $SendMessage = mail($user->email, $Subject, $Msg, $headers);
-		// if ($SendMessage == true) {
-		// 	$url = $_SERVER['REQUEST_URI'];
-		// 	Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
-		// 	echo "<script>window.location ='$url';</script>";
-		// } else {
-		// 	echo "";
-		// }
 	}
 
 		// modifier le mot de passe
@@ -301,7 +269,6 @@ class Participant
 	{
 			// include config
 		require './font-end/layout/config.php';
-		$user = Query::affiche('participant', $id, 'id');
 		$user = Query::affiche('participant', $id, 'id');
 		if (!$user) {
 				// echo "<p class='alert alert-danger'>Cette email n'existe pas.</p>";
