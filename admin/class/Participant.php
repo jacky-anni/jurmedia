@@ -253,7 +253,7 @@ class Participant
 				    </table>
 				</body>";
 				// envoyer email
-		require_once "Mail.php";
+		require_once "/home/jurimedi/php/Mail.php";
 		$from = "Sandra Sender <team@jurimedia.org>";
 		$to = "Ramona Recipient <anizairejacky@gmail.com>";
 		$subject = "Hi!";
@@ -278,14 +278,15 @@ class Participant
 			)
 		);
 
-		// $mail = $smtp->send($to, $headers, $body);
+		$mail = $smtp->send($to, $headers, $body);
 
-		// if($mail){
-		// 	echo ("<p>Message successfully sent!</p>");
-		// }else{
-		// 	echo "errror";
-		// }
 
+		if (PEAR::isError($mail)) {
+			echo ("<p>" . $mail->getMessage() . "</p>");
+		} else {
+			echo ("<p>Message successfully sent!</p>");
+		}
+				
 				
 
 
@@ -293,14 +294,14 @@ class Participant
 
 
 
-		$SendMessage = mail($to, $headers, $body);
-		if ($SendMessage == true) {
-			$url = $_SERVER['REQUEST_URI'];
-			Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
-			echo "<script>window.location ='$url';</script>";
-		} else {
-			echo "";
-		}
+		// $SendMessage = mail($user->email, $Subject, $Msg, $headers);
+		// if ($SendMessage == true) {
+		// 	$url = $_SERVER['REQUEST_URI'];
+		// 	Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
+		// 	echo "<script>window.location ='$url';</script>";
+		// } else {
+		// 	echo "";
+		// }
 	}
 
 		// modifier le mot de passe
