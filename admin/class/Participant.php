@@ -1,4 +1,7 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 class Participant
 {
@@ -177,6 +180,12 @@ class Participant
 		$org = Query::affiche('organisation', 1, 'id');
 			// token
 			$token = sha1($user->email) . sha1($user->id);
+		// $token = sha1($user->email) . $user->mdp;
+			// sujet de l'email
+		$Subject = "Reinitialisation de mot de passe";
+			// outil de configuration
+		$headers = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 		$link_mail = "$link_menu/reset-password/$token/$user->id/edit";
 	        // le message
 		$Msg = "
@@ -247,58 +256,59 @@ class Participant
 				    </table>
 				</body>";
 				// envoyer email
-		// require_once "Mail.php";
-		// $from = "Sandra Sender <team@jurimedia.org>";
-		// $to = "Ramona Recipient <anizairejacky@gmail.com>";
-		// $subject = "Hi!";
-		// $body = "Hi,\n\nHow are you?";
 
-		// $host = "mail.jurimedia.org";
-		// $username = "team@jurimedia.org";
-		// $password = "jurimedia2022";
+		
+//Load Composer's autoloader
+		require 'vendor/autoload.php';
 
-		// $headers = array(
-		// 	'From' => $from,
-		// 	'To' => $to,
-		// 	'Subject' => $subject
-		// );
-		// $smtp = Mail::factory(
-		// 	'smtp',
-		// 	array(
-		// 		'host' => $host,
-		// 		'auth' => true,
-		// 		'username' => $username,
-		// 		'password' => $password
-		// 	)
-		// );
+//Create an instance; passing `true` enables exceptions
+		$mail = new PHPMailer(true);
 
-		// $mail = $smtp->send($to, $headers, $body);
+		try {
+    //Server settings
+			$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+			$mail->isSMTP();                                            //Send using SMTP
+			$mail->Host = 'formations.jurimedia.org';                     //Set the SMTP server to send through
+			$mail->SMTPAuth = true;                                   //Enable SMTP authentication
+			$mail->Username = 'team@formations.jurimedia.org';                     //SMTP username
+			$mail->Password = 'jurimedia2022';                               //SMTP password
+			$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+			$mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
+    //Recipients
+			$mail->setFrom('anizairejacky@gmail.com', 'Mailer');
+			$mail->addAddress('anizairejacky@gmail.com', 'Joe User');     //Add a recipient
+			// $mail->addAddress('ellen@example.com');               //Name is optional
+			// $mail->addReplyTo('info@example.com', 'Information');
+			// $mail->addCC('cc@example.com');
+			// $mail->addBCC('bcc@example.com');
 
-		// if (PEAR::isError($mail)) {
-		// 	echo ("<p>" . $mail->getMessage() . "</p>");
-		// } else {
-		// 	echo ("<p>Message successfully sent!</p>");
-		// }
+    //Content
+			$mail->isHTML(true);                                  //Set email format to HTML
+			$mail->Subject = 'Here is the subject';
+			$mail->Body = 'This is the HTML message body <b>in bold!</b>';
+			$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-		$to = "anizairejacky@gmail.com";
-		$subject = "This is subject";
-
-	
-		$headers = 'From: team@formations.jurimedia.org' . "\r\n" .
-			'Reply-To: team@formations.jurimedia.org' . "\r\n" .
-			'X-Mailer: PHP/' . phpversion();
-		$headers .= "MIME-Version: 1.0\r\n";
-		$headers .= "Content-type: text/html\r\n";
-			
-		$SendMessage = mail($to, $Subject, $Msg, $headers);
-		if ($SendMessage == true) {
-			$url = $_SERVER['REQUEST_URI'];
-			Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
-			echo "<script>window.location ='$url';</script>";
-		} else {
-			echo "";
+			$mail->send();
+			echo 'Message has been sent';
+		} catch (Exception $e) {
+			echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 		}
+	
+
+
+
+
+
+
+		// $SendMessage = mail($user->email, $Subject, $Msg, $headers);
+		// if ($SendMessage == true) {
+		// 	$url = $_SERVER['REQUEST_URI'];
+		// 	Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
+		// 	echo "<script>window.location ='$url';</script>";
+		// } else {
+		// 	echo "";
+		// }
 	}
 
 		// modifier le mot de passe
