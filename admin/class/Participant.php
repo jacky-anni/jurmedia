@@ -1,7 +1,4 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
 class Participant
 {
@@ -179,124 +176,123 @@ class Participant
 			// selectionner l'organisation en question
 		$org = Query::affiche('organisation', 1, 'id');
 			// token
-		$token = sha1($user->email) . sha1($user->id);
+			$token = sha1($user->email) . sha1($user->id);
 		// $token = sha1($user->email) . $user->mdp;
 			// sujet de l'email
 		$Subject = "Reinitialisation de mot de passe";
 			// outil de configuration
-		$headers = "MIME-Version: 1.0" . "\r\n";
-		$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-		$headers .= 'From: <team@jurimedia.org>' . "\r\n";
+		$headers = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 		$link_mail = "$link_menu/reset-password/$token/$user->id/edit";
-
-		//Import PHPMailer classes into the global namespace
-//These must be at the top of your script, not inside a function
-		
-
-//Load Composer's autoloader
-		require 'vendor/autoload.php';
-
-//Create an instance; passing `true` enables exceptions
-		$mail = new PHPMailer(true);
-
-		try {
-    //Server settings
-			$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-			$mail->isSMTP();                                            //Send using SMTP
-			$mail->Host = 'mail.jurimedia.org';                     //Set the SMTP server to send through
-			$mail->SMTPAuth = true;                                   //Enable SMTP authentication
-			$mail->Username = '	team@jurimedia.org';                     //SMTP username
-			$mail->Password = 'jurimedia2022';                               //SMTP password
-			$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-			$mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-    //Recipients
-			$mail->setFrom('anizairejacky@gmail.com', 'Mailer');
-			$mail->addAddress('previluslelande419@gmail.com', 'Joe User');     //Add a recipient
-
-    //Content
-			$mail->isHTML(true);                                  //Set email format to HTML
-			$mail->Subject = 'Here is the subject';
-			$mail->Body = 'This is the HTML message body <b>in bold!</b>';
-			$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-			$mail->send();
-			echo 'Message has been sent';
-		} catch (Exception $e) {
-			echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-		}
-
-
 	        // le message
-		// $Msg = "
-		// 		<head>
-		// 			<link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
-		// 			<link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'>
-		// 			<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'>
-		// 			<meta content='width=device-width, initial-scale=1.0' name='viewport'/>
-		// 			<meta http-equiv='Content-type' content='text/html; charset=utf-8'>
-		// 		</head>
+		$Msg = "
+				<head>
+					<link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+					<link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'>
+					<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'>
+					<meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+					<meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+				</head>
 
-		// 		<body style='background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;'>
-		// 		    <table border='0' cellpadding='0' cellspacing='0' width='100%'>
-		// 		        <!-- LOGO -->
-		// 		        <tr>
-		// 		            <td bgcolor='#26a8b4' align='center'>
-		// 		                <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
-		// 		                    <tr>
-		// 		                        <td align='center' valign='top' style='padding: 40px 10px 40px 10px;'> </td>
-		// 		                    </tr>
-		// 		                </table>
-		// 		            </td>
-		// 		        </tr>
-		// 		        <tr>
-		// 		            <td bgcolor='#26a8b4' align='center' style='padding: 0px 10px 0px 10px;'>
+				<body style='background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;'>
+				    <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+				        <!-- LOGO -->
+				        <tr>
+				            <td bgcolor='#26a8b4' align='center'>
+				                <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
+				                    <tr>
+				                        <td align='center' valign='top' style='padding: 40px 10px 40px 10px;'> </td>
+				                    </tr>
+				                </table>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td bgcolor='#26a8b4' align='center' style='padding: 0px 10px 0px 10px;'>
 				              
-		// 		                </table>
-		// 		            </td>
-		// 		        </tr>
-		// 		        <tr>
-		// 		            <td bgcolor='#f4f4f4' align='center' style='padding: 0px 10px 0px 10px;'>
-		// 		                <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
-		// 		                    <tr>
-		// 		                        <td bgcolor='#ffffff' align='left' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 27px;'>
+				                </table>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td bgcolor='#f4f4f4' align='center' style='padding: 0px 10px 0px 10px;'>
+				                <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
+				                    <tr>
+				                        <td bgcolor='#ffffff' align='left' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 27px;'>
 				                        
-		// 		                            <p style='margin: 20px; font-size:17px; line-height:23px; margin-top:-20px;'>
-		// 		                            Salut $user->nom_complet,<br/>
-		// 		                            si vous n'avez pas fait cette demande, ignorez simplement cet e-mail. Sinon, veuillez cliquer sur le bouton ci-dessous pour changer votre mot de passe</p>
-		// 		                        </td>
-		// 		                    </tr>
-		// 		                    <tr>
-		// 		                        <td bgcolor='#ffffff' align='left'>
-		// 		                            <table width='100%' border='0' cellspacing='0' cellpadding='0'>
-		// 		                                <tr>
-		// 		                                    <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 60px 30px;'>
+				                            <p style='margin: 20px; font-size:17px; line-height:23px; margin-top:-20px;'>
+				                            Salut $user->nom_complet,<br/>
+				                            si vous n'avez pas fait cette demande, ignorez simplement cet e-mail. Sinon, veuillez cliquer sur le bouton ci-dessous pour changer votre mot de passe</p>
+				                        </td>
+				                    </tr>
+				                    <tr>
+				                        <td bgcolor='#ffffff' align='left'>
+				                            <table width='100%' border='0' cellspacing='0' cellpadding='0'>
+				                                <tr>
+				                                    <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 60px 30px;'>
 
-		// 		                                        <table border='0' cellspacing='0' cellpadding='0'>
-		// 		                                            <tr>
-		// 		                                                <td align='center' style='border-radius: 3px;' bgcolor='#FFA73B'><a href='$link_mail' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; background-color: #26a8b4; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #26a8b4; display: inline-block;'>Reinitialiser</a></td>
-		// 		                                            </tr>
-		// 		                                        </table>
+				                                        <table border='0' cellspacing='0' cellpadding='0'>
+				                                            <tr>
+				                                                <td align='center' style='border-radius: 3px;' bgcolor='#FFA73B'><a href='$link_mail' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; background-color: #26a8b4; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #26a8b4; display: inline-block;'>Reinitialiser</a></td>
+				                                            </tr>
+				                                        </table>
 
-		// 		                                    </td>
-		// 		                                </tr>
-		// 		                            </table>
-		// 		                        </td>
-		// 		                    </tr> <!-- COPY -->
+				                                    </td>
+				                                </tr>
+				                            </table>
+				                        </td>
+				                    </tr> <!-- COPY -->
 
 
-		// 		                    <tr>
-		// 		                        <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-		// 		                            <p style='margin: 20px; font-size:17px;'>L'equipe de l'OCID</p>
-		// 		                        </td>
-		// 		                    </tr>
-		// 		                </table>
-		// 		            </td>
-		// 		        </tr>
-		// 		    </table>
-		// 		</body>";
-		// 		// envoyer email
-		// 		// echo $Msg;
+				                    <tr>
+				                        <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
+				                            <p style='margin: 20px; font-size:17px;'>L'equipe de l'OCID</p>
+				                        </td>
+				                    </tr>
+				                </table>
+				            </td>
+				        </tr>
+				    </table>
+				</body>";
+				// envoyer email
+		require_once "Mail.php";
+		$from = "Sandra Sender <team@jurimedia.org>";
+		$to = "Ramona Recipient <anizairejacky@gmail.com>";
+		$subject = "Hi!";
+		$body = "Hi,\n\nHow are you?";
+
+		$host = "mail.jurimedia.org";
+		$username = "team@jurimedia.org";
+		$password = "jurimedia2022";
+
+		$headers = array(
+			'From' => $from,
+			'To' => $to,
+			'Subject' => $subject
+		);
+		$smtp = Mail::factory(
+			'smtp',
+			array(
+				'host' => $host,
+				'auth' => true,
+				'username' => $username,
+				'password' => $password
+			)
+		);
+
+		$mail = $smtp->send($to, $headers, $body);
+
+		if (PEAR::isError($mail)) {
+			echo ("<p>" . $mail->getMessage() . "</p>");
+		} else {
+			echo ("<p>Message successfully sent!</p>");
+		}
+				
+				
+
+
+
+
+
+
 		// $SendMessage = mail($user->email, $Subject, $Msg, $headers);
 		// if ($SendMessage == true) {
 		// 	$url = $_SERVER['REQUEST_URI'];
@@ -312,7 +308,6 @@ class Participant
 	{
 			// include config
 		require './font-end/layout/config.php';
-		$user = Query::affiche('participant', $id, 'id');
 		$user = Query::affiche('participant', $id, 'id');
 		if (!$user) {
 				// echo "<p class='alert alert-danger'>Cette email n'existe pas.</p>";
