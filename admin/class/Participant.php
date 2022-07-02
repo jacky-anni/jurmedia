@@ -253,7 +253,7 @@ class Participant
 				    </table>
 				</body>";
 				// envoyer email
-		require_once "/home/jurimedi/php/Mail.php";
+		require_once "/home/jurimedi/php";
 		$from = "Sandra Sender <team@jurimedia.org>";
 		$to = "Ramona Recipient <anizairejacky@gmail.com>";
 		$subject = "Hi!";
