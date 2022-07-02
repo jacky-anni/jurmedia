@@ -280,11 +280,17 @@ class Participant
 
 		$mail = $smtp->send($to, $headers, $body);
 
-		if (PEAR::isError($mail)) {
-			echo ("<p>" . $mail->getMessage() . "</p>");
-		} else {
+		if($mail){
 			echo ("<p>Message successfully sent!</p>");
+		}else{
+			echo ("<p>" . $mail->getMessage() . "</p>");
 		}
+
+		// if (PEAR::isError($mail)) {
+		// 	echo ("<p>" . $mail->getMessage() . "</p>");
+		// } else {
+		// 	echo ("<p>Message successfully sent!</p>");
+		// }
 				
 				
 
