@@ -177,12 +177,6 @@ class Participant
 		$org = Query::affiche('organisation', 1, 'id');
 			// token
 			$token = sha1($user->email) . sha1($user->id);
-		// $token = sha1($user->email) . $user->mdp;
-			// sujet de l'email
-		$Subject = "Reinitialisation de mot de passe";
-			// outil de configuration
-		$headers = 'MIME-Version: 1.0' . "\r\n";
-		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 		$link_mail = "$link_menu/reset-password/$token/$user->id/edit";
 	        // le message
 		$Msg = "
@@ -286,9 +280,15 @@ class Participant
 		// } else {
 		// 	echo ("<p>Message successfully sent!</p>");
 		// }
-				
+
+		$to = "anizairejacky@gmail.com";
+		$subject = "This is subject";
+
+		$headers = "From:team@formations.jurimedia.org \r\n";
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-type: text/html\r\n";
 			
-		$SendMessage = mail($user->email, $Subject, $Msg, $headers);
+		$SendMessage = mail($to, $Subject, $Msg, $headers);
 		if ($SendMessage == true) {
 			$url = $_SERVER['REQUEST_URI'];
 			Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
