@@ -253,67 +253,49 @@ class Participant
 				    </table>
 				</body>";
 				// envoyer email
-		require_once "Mail.php";
-		$from = "Sandra Sender <team@jurimedia.org>";
-		$to = "Ramona Recipient <anizairejacky@gmail.com>";
-		$subject = "Hi!";
-		$body = "Hi,\n\nHow are you?";
+		// require_once "Mail.php";
+		// $from = "Sandra Sender <team@jurimedia.org>";
+		// $to = "Ramona Recipient <anizairejacky@gmail.com>";
+		// $subject = "Hi!";
+		// $body = "Hi,\n\nHow are you?";
 
-		$host = "mail.jurimedia.org";
-		$username = "team@jurimedia.org";
-		$password = "jurimedia2022";
+		// $host = "mail.jurimedia.org";
+		// $username = "team@jurimedia.org";
+		// $password = "jurimedia2022";
 
-		$headers = array(
-			'From' => $from,
-			'To' => $to,
-			'Subject' => $subject
-		);
-		$smtp = Mail::factory(
-			'smtp',
-			array(
-				'host' => $host,
-				'auth' => true,
-				'username' => $username,
-				'password' => $password
-			)
-		);
+		// $headers = array(
+		// 	'From' => $from,
+		// 	'To' => $to,
+		// 	'Subject' => $subject
+		// );
+		// $smtp = Mail::factory(
+		// 	'smtp',
+		// 	array(
+		// 		'host' => $host,
+		// 		'auth' => true,
+		// 		'username' => $username,
+		// 		'password' => $password
+		// 	)
+		// );
 
-		if (PEAR::isError($smtp)) {
-
-			echo ("<p>" . $smtp->getMessage() . "</p>");
-
-		}
+		// $mail = $smtp->send($to, $headers, $body);
 
 
-		$mail = $smtp->send($to, $headers, $body);
-
-
-
-		if (PEAR::isError($mail)) {
-
-			echo ("<p>" . $mail->getMessage() . "</p>");
-
-		} else {
-
-			echo ("<p>Message successfully sent!</p>");
-
-		}
-				
-				
-
-
-
-
-
-
-		// $SendMessage = mail($user->email, $Subject, $Msg, $headers);
-		// if ($SendMessage == true) {
-		// 	$url = $_SERVER['REQUEST_URI'];
-		// 	Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
-		// 	echo "<script>window.location ='$url';</script>";
+		// if (PEAR::isError($mail)) {
+		// 	echo ("<p>" . $mail->getMessage() . "</p>");
 		// } else {
-		// 	echo "";
+		// 	echo ("<p>Message successfully sent!</p>");
 		// }
+				
+			
+		$SendMessage = mail($user->email, $Subject, $Msg, $headers);
+		if ($SendMessage == true) {
+			$url = $_SERVER['REQUEST_URI'];
+			Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
+			echo "<script>window.location ='$url';</script>";
+		} else {
+			echo "";
+		}
 	}
 
 		// modifier le mot de passe
