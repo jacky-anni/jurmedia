@@ -400,7 +400,7 @@ class Participant
 	}
 
 	public static function validate($participant,$action) {
-		require 'font-end/layout/config.php';
+		
 		$check = Query::affiche('participant', $participant->email,'email');
 		if(!$check){
 			$token = sha1($participant->email) . sha1($participant->id);
@@ -409,7 +409,7 @@ class Participant
 			Fonctions::set_flash("Compte validé avec succès", 'success');
 
 			if($action==0){
-				
+				require 'font-end/layout/config.php';
 				$link_rediret = "$link_menu/reset-password/$token/$participant->id/edit&action=validate";
 			}else{
 				$link_rediret = $_SERVER['REQUEST_URI'];
