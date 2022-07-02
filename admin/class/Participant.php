@@ -338,13 +338,22 @@ class Participant
 
 		<body style='background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;'>
 			<table border='0' cellpadding='0' cellspacing='0' width='100%'>
+			  <tr>
+				<td bgcolor='#26a8b4' align='center'>
+					<table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
+						<tr>
+							<td align='center' valign='top' style='padding: 40px 10px 40px 10px;'> </td>
+						</tr>
+					</table>
+				</td>
+			</tr>
 				<tr>
 					<td bgcolor='#f4f4f4' align='center' style='padding: 0px 10px 0px 10px;'>
 						<table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
 							<tr>
 								<td bgcolor='#ffffff' align='left' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 27px;'>
 									<p style='margin: 20px; font-size:17px; line-height:23px;'>
-									Salut $participant->nom_complet ,<br/>
+									Salut <b>$participant->nom_complet </b>,<br/>
 									Nous sommes ravis de vous voir commencer. Tout d'abord, vous devez confirmer votre compte. Appuyez simplement sur le bouton ci-dessous.</p>
 								</td>
 							</tr>
@@ -391,6 +400,7 @@ class Participant
 	}
 
 	public static function validate($participant,$action) {
+		require 'font-end/layout/config.php';
 		$check = Query::affiche('participant', $participant->email,'email');
 		if(!$check){
 			$token = sha1($participant->email) . sha1($participant->id);
