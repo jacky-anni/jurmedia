@@ -1,7 +1,4 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
 class Participant
 {
@@ -183,12 +180,9 @@ class Participant
 		// $token = sha1($user->email) . $user->mdp;
 			// sujet de l'email
 		$Subject = "Reinitialisation de mot de passe";
-			// outil de configuration
-		$headers = 'MIME-Version: 1.0' . "\r\n";
-		$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 		$link_mail = "$link_menu/reset-password/$token/$user->id/edit";
 	        // le message
-		$Msg = "
+		$msg = "
 				<head>
 					<link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
 					<link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'>
@@ -198,8 +192,9 @@ class Participant
 				</head>
 
 				<body style='background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;'>
-				    <table border='0' cellpadding='0' cellspacing='0' width='100%'>
-				        <!-- LOGO -->
+					<center>
+					<table border='0' cellpadding='0' cellspacing='0' width='100%'>
+				   
 				        <tr>
 				            <td bgcolor='#26a8b4' align='center'>
 				                <table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
@@ -211,7 +206,6 @@ class Participant
 				        </tr>
 				        <tr>
 				            <td bgcolor='#26a8b4' align='center' style='padding: 0px 10px 0px 10px;'>
-				              
 				                </table>
 				            </td>
 				        </tr>
@@ -222,7 +216,7 @@ class Participant
 				                        <td bgcolor='#ffffff' align='left' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 27px;'>
 				                        
 				                            <p style='margin: 20px; font-size:17px; line-height:23px; margin-top:-20px;'>
-				                            Salut $user->nom_complet,<br/>
+				                            Salut <b>$user->nom_complet</b> ,<br/>
 				                            si vous n'avez pas fait cette demande, ignorez simplement cet e-mail. Sinon, veuillez cliquer sur le bouton ci-dessous pour changer votre mot de passe</p>
 				                        </td>
 				                    </tr>
@@ -254,51 +248,14 @@ class Participant
 				            </td>
 				        </tr>
 				    </table>
+					</center>
 				</body>";
 				// envoyer email
 
-		
-//Load Composer's autoloader
-		require 'vendor/autoload.php';
-
-//Create an instance; passing `true` enables exceptions
-		$mail = new PHPMailer(true);
-
-		try {
-    //Server settings
-			$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-			$mail->isSMTP();                                            //Send using SMTP
-			$mail->Host = 'formations.jurimedia.org';                     //Set the SMTP server to send through
-			$mail->SMTPAuth = true;                                   //Enable SMTP authentication
-			$mail->Username = 'team@formations.jurimedia.org';                     //SMTP username
-			$mail->Password = 'jurimedia2022';                               //SMTP password
-			$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-			$mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-    //Recipients
-			$mail->setFrom('anizairejacky@gmail.com', 'Mailer');
-			$mail->addAddress('anizairejacky@gmail.com', 'Joe User');     //Add a recipient
-			// $mail->addAddress('ellen@example.com');               //Name is optional
-			// $mail->addReplyTo('info@example.com', 'Information');
-			// $mail->addCC('cc@example.com');
-			// $mail->addBCC('bcc@example.com');
-
-    //Content
-			$mail->isHTML(true);                                  //Set email format to HTML
-			$mail->Subject = 'Here is the subject';
-			$mail->Body = 'This is the HTML message body <b>in bold!</b>';
-			$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-			$mail->send();
-			echo 'Message has been sent';
-		} catch (Exception $e) {
-			echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-		}
-	
-
-
-
-
+				require 'admin/class/Mail.php';
+				$message = "Un message de restauration envoyé sur $user->email";
+				$url = $_SERVER['REQUEST_URI'];
+				Mail::sendMail($user, $Subject, $msg, $url, $message);
 
 
 		// $SendMessage = mail($user->email, $Subject, $Msg, $headers);
@@ -371,8 +328,7 @@ class Participant
 			$org = Query::affiche('organisation', 1, 'id');
 			$token = sha1($participant->email) . sha1($participant->id);
 			$link_mail = "$link_menu/validation-de-compte/$token/$participant->id/edit?action=validate";
-			$url = $_SERVER['REQUEST_URI'];
-			$Msg ="<head>
+			$msg ="<head>
 			<link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
 			<link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'>
 			<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'>
@@ -382,18 +338,6 @@ class Participant
 
 		<body style='background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;'>
 			<table border='0' cellpadding='0' cellspacing='0' width='100%'>
-
-				<tr>
-					<td bgcolor='#26a8b4' align='center' style='padding: 0px 10px 0px 10px;'>
-						<table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
-							<tr>
-								<td bgcolor='#ffffff' align='center' valign='top' style='padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;'>
-									<img src='$org->site_web/$link_admin/dist/img/logo/$org->logo' width='125'  style='display: block; border: 0px;' />
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
 				<tr>
 					<td bgcolor='#f4f4f4' align='center' style='padding: 0px 10px 0px 10px;'>
 						<table border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width: 600px;'>
@@ -433,32 +377,11 @@ class Participant
 				</tr>
 			</table>
 		</body>";
-			Fonctions::set_flash("Email de confirmation envoyé sur " . $email, 'success');
-
-			// Fonctions::set_flash("Voici le link " . $link_mail, 'success');
-					//==========================================================================================
-						// envoyer l'email 
-					// sujet de l'email
 			$Subject = "Validation de compte";
-					// outil de configuration
-			$headers = 'MIME-Version: 1.0' . "\r\n";
-			$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
-
-			// echo $Msg;
-					
-			// le message
-			//envoyer email
-			$SendMessage = mail($participant->email, $Subject, $Msg, $headers);
-			if ($SendMessage == true) {
-				$url = $_SERVER['REQUEST_URI'];
-				echo "<script>window.location ='$url';</script>";
-			} else {
-				echo "";
-			}
-
+			require 'admin/class/Mail.php';
+			$message = "Email de confirmation envoyé sur $participant->email";
 			$url = $_SERVER['REQUEST_URI'];
-			echo "<script>window.location ='$url';</script>";
-
+			Mail::sendMail($participant, $Subject, $msg, $url, $message);
 		} else {
 			$url = $_SERVER['REQUEST_URI'];
 			Fonctions::set_flash("ce compte n'existe pas", 'danger');
