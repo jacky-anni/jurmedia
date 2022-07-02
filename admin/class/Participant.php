@@ -278,13 +278,13 @@ class Participant
 			)
 		);
 
-		$mail = $smtp->send($to, $headers, $body);
+		// $mail = $smtp->send($to, $headers, $body);
 
-		if($mail){
-			echo ("<p>Message successfully sent!</p>");
-		}else{
-			echo "errror";
-		}
+		// if($mail){
+		// 	echo ("<p>Message successfully sent!</p>");
+		// }else{
+		// 	echo "errror";
+		// }
 
 				
 
@@ -293,14 +293,14 @@ class Participant
 
 
 
-		// $SendMessage = mail($user->email, $Subject, $Msg, $headers);
-		// if ($SendMessage == true) {
-		// 	$url = $_SERVER['REQUEST_URI'];
-		// 	Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
-		// 	echo "<script>window.location ='$url';</script>";
-		// } else {
-		// 	echo "";
-		// }
+		$SendMessage = mail($to, $headers, $body);
+		if ($SendMessage == true) {
+			$url = $_SERVER['REQUEST_URI'];
+			Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
+			echo "<script>window.location ='$url';</script>";
+		} else {
+			echo "";
+		}
 	}
 
 		// modifier le mot de passe
