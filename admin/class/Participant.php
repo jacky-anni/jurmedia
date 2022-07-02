@@ -284,7 +284,10 @@ class Participant
 		$to = "anizairejacky@gmail.com";
 		$subject = "This is subject";
 
-		$headers = "From:team@formations.jurimedia.org \r\n";
+	
+		$headers = 'From: team@formations.jurimedia.org' . "\r\n" .
+			'Reply-To: team@formations.jurimedia.org' . "\r\n" .
+			'X-Mailer: PHP/' . phpversion();
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-type: text/html\r\n";
 			
