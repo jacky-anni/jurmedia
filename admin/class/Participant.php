@@ -241,7 +241,7 @@ class Participant
 
 				                    <tr>
 				                        <td bgcolor='#ffffff' align='left' style='padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-				                            <p style='margin: 20px; font-size:17px;'>L'equipe de l'OCID</p>
+				                            <p style='margin: 20px; font-size:17px;'>L'equipe de JURIMEDIA</p>
 				                        </td>
 				                    </tr>
 				                </table>
@@ -378,7 +378,7 @@ class Participant
 
 							<tr>
 								<td bgcolor='#ffffff' align='left' style='padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;'>
-									<p style='margin: 20px; font-size:17px;'><b><i>L'equipe de l'OCID<i/></b></p>
+									<p style='margin: 20px; font-size:17px;'><b><i>L'equipe de JURIMEDIA<i/></b></p>
 								</td>
 							</tr>
 						</table>
@@ -409,7 +409,7 @@ class Participant
 			Fonctions::set_flash("Compte validé avec succès", 'success');
 
 			if($action==0){
-				require 'font-end/layout/config.php';
+				
 				$link_rediret = "$link_menu/reset-password/$token/$participant->id/edit&action=validate";
 			}else{
 				$link_rediret = $_SERVER['REQUEST_URI'];
@@ -419,9 +419,11 @@ class Participant
 			if($action==0){
 				Fonctions::set_flash("ce compte à déjà validé, connectez-vous ", 'danger');
 				$link_rediret = "$link_menu/connexion";
+				echo "<script>window.location ='$link_rediret';</script>";
 			}else{
 				Fonctions::set_flash("ce compte à déjà validé", 'danger');
 				$link_rediret = $_SERVER['REQUEST_URI'];
+				echo "<script>window.location ='$link_rediret';</script>";
 			}
 		}
 	}
