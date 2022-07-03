@@ -5,7 +5,7 @@ class Participant
 	public static function authentifier($email, $password)
 	{
 
-			// verifier si l'email est valide 
+		// verifier si l'email est valide 
 		if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 				// verifier l'email et le mot de passe 
 			$requette = class_bdd::connexion_bdd()->prepare("SELECT * FROM participant WHERE email=? AND mdp=?");
@@ -217,7 +217,7 @@ class Participant
 				                        
 				                            <p style='margin: 20px; font-size:17px; line-height:23px; margin-top:-20px;'>
 				                            Salut <b>$user->nom_complet</b> ,<br/>
-				                            si vous n'avez pas fait cette demande, ignorez simplement cet e-mail. Sinon, veuillez cliquer sur le bouton ci-dessous pour changer votre mot de passe</p>
+				                            Si vous n'avez pas fait cette demande, ignorez simplement cet e-mail. Sinon, veuillez cliquer sur le bouton ci-dessous pour changer votre mot de passe</p>
 				                        </td>
 				                    </tr>
 				                    <tr>
@@ -257,15 +257,6 @@ class Participant
 				$url = $_SERVER['REQUEST_URI'];
 				Mail::sendMail($user, $Subject, $msg, $url, $message);
 
-
-		// $SendMessage = mail($user->email, $Subject, $Msg, $headers);
-		// if ($SendMessage == true) {
-		// 	$url = $_SERVER['REQUEST_URI'];
-		// 	Fonctions::set_flash("Un message de restauration envoyé sur $user->email", 'success');
-		// 	echo "<script>window.location ='$url';</script>";
-		// } else {
-		// 	echo "";
-		// }
 	}
 
 		// modifier le mot de passe
@@ -419,7 +410,7 @@ class Participant
 			echo "<script>window.location ='$link_rediret';</script>";
 		}else{
 			if($action==0){
-				Fonctions::set_flash("ce compte à déjà validé, connectez-vous ", 'danger');
+				Fonctions::set_flash("Ce compte à déjà validé, connectez-vous ", 'danger');
 				$link_rediret = "$link_menu/connexion";
 				echo "<script>window.location ='$link_rediret';</script>";
 			}else{

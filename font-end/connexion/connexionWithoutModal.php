@@ -18,7 +18,7 @@
 
 
 
-<div id="feature-16-1" class="c-content-feature-16 c-bg-img-center" style="background-image: url(<?= $link ?>/assets/base/img/slide/12.jpg)">
+<div id="feature-16-1" class="c-content-feature-16 c-bg-img-center" style="background-image: url(<?= $link ?>/assets/base/img/layout/Actions-de-formation.jpeg)">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-offset-1 col-md-5 col-xs-12">

@@ -16,7 +16,7 @@
 <?php include('font-end/layout/banner.php'); ?>
 <?php banner(''); ?>
 
-<div id="feature-16-1" class="c-content-feature-16 c-bg-img-center" style="background-image: url(<?= $link ?>/assets/base/img/slide/12.jpg)">
+<div id="feature-16-1" class="c-content-feature-16 c-bg-img-center" style="background-image: url(<?= $link ?>/assets/base/img/layout/Actions-de-formation.jpeg)">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-offset-1 col-md-5 col-xs-12">
@@ -25,7 +25,7 @@
 					<h2 class="c-feature-16-title c-font-bold c-font-uppercase">Validez votre compte</h2>
 					<h6 id="success1" style="font-size: 14px;"></h5>
 					<p>
-						Entrez l'email que vous avez soumettre a jurimedia dans les etapes des inscriptions
+						Entrez l'email que vous avez soumettre à jurimedia dans les etapes de l'inscriptions
 					</p>
 					<?php include('admin/includes/flash.php'); ?>
 					<form method="POST" role="form" data-parsley-validate action="">
