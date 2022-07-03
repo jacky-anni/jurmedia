@@ -147,7 +147,7 @@
 													<input type="text" name="profession" value="<?= $user->professsion ?>" class="form-control" placeholder="+5094872 0022" required="">
 												</div>
 												<div class="form-group col-md-6">
-													<label class="">Fonction dals l'lorganisation</label>
+													<label class="">Votre fonction dans l'lorganisation</label>
 													<input type="text" name="fonction" value="<?= $user->fonction ?>" class="form-control" placeholder="+5093349-90" required="">
 												</div>
 											</div>

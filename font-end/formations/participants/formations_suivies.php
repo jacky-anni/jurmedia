@@ -1,5 +1,6 @@
 <?php $cours = Query::count_query('formation'); ?>
 <?php $cours_suivie = Query::count_prepare('formation_suivie', $_SESSION['id_user'], 'id_participant'); ?>
+<?php $user = Query::affiche('participant', $_SESSION['id_user'], 'id'); ?>
 
 
 <div class="c-content-box c-size-md" style="background-color:#181870; margin-bottom:10px;">
@@ -8,7 +9,10 @@
 	<div class="c-page-title c-pull-left">
 		<h5 class="c-font-uppercase c-font-bold">Bienvenue <?= $_SESSION['nom'] ?></h5>
 		<ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-			<li><a href="https://chat.whatsapp.com/IniQDzWz7q26VmvH3pEG1j" target="_blank" style="color:black;"> <i class="fa fa-whatsapp"></i> Interegrez le groupe de la formation</a></li>  		
+			<li><a href="https://chat.whatsapp.com/IniQDzWz7q26VmvH3pEG1j" target="_blank" style="color:black;"> <i class="fa fa-whatsapp"></i> Interegrez le groupe de la formation</a></li>  
+			<?php if($user->add_user==0): ?>
+			<li><a href="<?= $link_menu ?>/ajouter-participant" style="color:black;"> <i class="fa fa-user"></i> Ajouter un participant</a></li>  				
+		<?php endif ?>
 		</ul>
 	</div>
 	</div>
@@ -117,19 +121,6 @@
 		</div><br>
 	</div>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 
 

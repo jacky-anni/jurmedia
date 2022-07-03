@@ -38,6 +38,11 @@ if (!$formation) {
 <div class="c-content-box c-size-md">
 	<div class="container">
 		<div class="row c-page-faq-2">
+
+		<?php $module_test = Query::count_prepare('module_formation', $formation->id, 'id_formation'); ?>
+
+
+		<?php if($module_test >= 1) { ?>
 		    <div class="col-sm-12">
 			    <?php include('partials/modules.php'); ?>
 			    <div class="alert alert-success alert-sm alert-dismissible" role="alert">
@@ -45,6 +50,11 @@ if (!$formation) {
 					<!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
 				</div>
 			</div>
+		<?php }else{ ?>
+		<p class='alert alert-danger'><b>Cette formation n'est pas encore disponible</b></p>
+		Date début : <?= Fonctions::format_date($formation->date_debut); ?>
+
+		<?php } ?>
 		</div>
 	</div>
 </div>

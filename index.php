@@ -32,6 +32,10 @@ switch ($url) {
 	require 'font-end/formations/participants/validation_compte_email.php';
 	break;
 
+	case $url[0] == 'ajouter-participant':
+		require 'font-end/formations/participants/ajouter-participant.php';
+		break;
+
 		
 	// reset password
 	case $url[0] == 'reset-password':

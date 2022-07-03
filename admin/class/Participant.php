@@ -400,16 +400,18 @@ class Participant
 	}
 
 	public static function validate($participant,$action) {
+		if ($action == 0) {
+			require 'font-end/layout/config.php';
+		}
 		
 		$check = Query::affiche('participant', $participant->email,'email');
 		if(!$check){
 			$token = sha1($participant->email) . sha1($participant->id);
-			$req = class_bdd::connexion_bdd()->prepare("INSERT INTO participant(id,nom_complet,sexe,departement,commune_residence,email,telephone,telephone_whatsapp,professsion,fonction,nom_organisation,sigle,active) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-			$req->execute(array($participant->id,$participant->nom_complet,$participant->sexe,$participant->departement,$participant->commune_residence,$participant->email,$participant->telephone,$participant->telephone_whatsapp,$participant->professsion,$participant->fonction,$participant->nom_organisation,$participant->sigle,1));
+			$req = class_bdd::connexion_bdd()->prepare("INSERT INTO participant(id,nom_complet,sexe,departement,commune_residence,email,telephone,telephone_whatsapp,professsion,fonction,nom_organisation,sigle,active,resp) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			$req->execute(array($participant->id,$participant->nom_complet,$participant->sexe,$participant->departement,$participant->commune_residence,$participant->email,$participant->telephone,$participant->telephone_whatsapp,$participant->professsion,$participant->fonction,$participant->nom_organisation,$participant->sigle,1, $participant->resp));
 			Fonctions::set_flash("Compte validé avec succès", 'success');
 
 			if($action==0){
-				require 'font-end/layout/config.php';
 				$link_rediret = "$link_menu/reset-password/$token/$participant->id/edit&action=validate";
 			}else{
 				$link_rediret = $_SERVER['REQUEST_URI'];
@@ -429,19 +431,48 @@ class Participant
 	}
 
 
-	// public static function ajouter_participant($nom, $sexe,$email, $commune, $departement, $telephone, $telephone2, $profession, $fonction) {
-	// 	$check = Query::affiche('participant', $participant->email,'email');
-	// 	if(!$check){
-	// 		$token = sha1($participant->email) . sha1($participant->id);
-	// 		$req = class_bdd::connexion_bdd()->prepare("INSERT INTO participant(id,nom_complet,sexe,departement,commune_residence,email,telephone,telephone_whatsapp,professsion,fonction,nom_organisation,sigle,active) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-	// 		$req->execute(array($participant->id,$participant->nom_complet,$participant->sexe,$participant->departement,$participant->commune_residence,$participant->email,$participant->telephone,$participant->telephone_whatsapp,$participant->professsion,$participant->fonction,$participant->nom_organisation,$participant->sigle,1));
-	// 		Fonctions::set_flash("Compte validé avec succès", 'success');
+	public static function ajouter_participant($nom, $sexe, $departement, $commune, $email, $telephone, $telephone2, $profession, $fonction) {
+		$participant = Query::affiche('participant', $_SESSION['id_user'], 'id');
+		if($participant){
 
-			
-	// 	}else{
-			
-	// 	}
-	// }
+			if($participant->resp ==1){
+
+				if ($participant->add_user == 0) {
+					$check = Query::affiche('participants_temp', $email, 'email');
+					if(!$check){
+						$token = sha1($participant->email) . sha1($participant->id);
+						$req = class_bdd::connexion_bdd()->prepare("INSERT INTO participants_temp(nom_complet,sexe,departement,commune_residence,email,telephone,telephone_whatsapp,professsion,fonction,nom_organisation,sigle,resp) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+						$req->execute(array($nom, $sexe, $departement, $commune, $email, $telephone, $telephone2, $profession, $fonction, $participant->nom_organisation, $participant->sigle, 0));
+
+						$requette = class_bdd::connexion_bdd()->prepare("UPDATE participant SET add_user=? WHERE id=?");
+						$requette->execute(array(1, $_SESSION['id_user']));
+
+						self::valider_or_no($email);
+
+						Fonctions::set_flash("Compte ajouté avec succès, email de confirmartion envoyé sur $email ", 'success');
+						$link_rediret = $_SERVER['REQUEST_URI'];
+						echo "<script>window.location ='$link_rediret';</script>";
+					}else{
+						Fonctions::set_flash("Participant déjà existé", 'danger');
+						$link_rediret = $_SERVER['REQUEST_URI'];
+						echo "<script>window.location ='$link_rediret';</script>";
+					}
+				}else{
+					Fonctions::set_flash("Vous avez déjà ajouté un participant", 'danger');
+					$link_rediret = $_SERVER['REQUEST_URI'];
+					echo "<script>window.location ='$link_rediret';</script>";
+				}
+			}else{
+				Fonctions::set_flash("Vous n'avez pas le droit pour exécuter cette tache", 'danger');
+				$link_rediret = $_SERVER['REQUEST_URI'];
+				echo "<script>window.location ='$link_rediret';</script>";
+			}
+		}else{
+			Fonctions::set_flash("Compte n'existe pas", 'danger');
+			$link_rediret = $_SERVER['REQUEST_URI'];
+			echo "<script>window.location ='$link_rediret';</script>";
+		}
+	}
 
  }
 ?>

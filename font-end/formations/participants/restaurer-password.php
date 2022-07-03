@@ -30,7 +30,6 @@
 						<?php if(isset($_GET['action'])) : ?>
 							<p class="alert alert-info"><b>Ajouter un mot de passe  </b> </p>
 						<?php endif ?>
-
 						<div class="modal-content c-square">
 							<div class="modal-body">
 							<!--  <h3 class="c-font-24 c-font-sbold"><b> <i class="fa fa-sign-in"></i> Connexion</b></h3> -->
