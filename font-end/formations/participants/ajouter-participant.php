@@ -41,7 +41,7 @@
                                 <input type="text" name="nom" value="<?php if(isset($_POST['nom'])) { echo $_POST['nom'];} ?>" class="form-control" placeholder="Jacky Anizaire" required="">
                             </div>
 
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label class="">Sexe </label>
                             <select name="sexe" class="form-control"  required="">
                                     <option value="">Choisir votre sexe</option>
@@ -100,12 +100,7 @@
                             </select>
                         </div>
 
-                         <div class="form-group col-md-6">
-                                <label class="">Commune de residence</label>
-                                <input type="text" name="commune" value="<?php if (isset($_POST['commune'])) {
-                                                                            echo $_POST['commune'];
-                                                                        } ?>" class="form-control" placeholder="Port-Margot" required="">
-                            </div>
+                        
                     </div>
                 </div>
             </div>
