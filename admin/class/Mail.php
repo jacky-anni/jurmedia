@@ -26,7 +26,7 @@ class Mail {
 
     //Recipients
             $mail->setFrom('team@jurimedia.org', 'Equipe de jurimedia');
-            $mail->addAddress($user->email, $user->prenom);     //Add a recipient
+            $mail->addAddress($user->email);     //Add a recipient
 
     //Content
             $mail->isHTML(true);                                  //Set email format to HTML
