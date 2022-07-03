@@ -116,7 +116,7 @@
                             </div>
                          <div class="form-group col-md-6">
                                 <label class="">Email</label>
-                                <input type="email" name="email" value="<?php if (isset($_POST['email'])) { echo $_POST['email'];} ?>" class="form-control" placeholder="+5094872 0022" required="">
+                                <input type="email" name="email" value="<?php if (isset($_POST['email'])) { echo $_POST['email'];} ?>" class="form-control" placeholder="anizairejacky@gmail.com" required="">
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="">Téléphone</label>
