@@ -31,7 +31,7 @@
         </div><hr>
 
         <div class="col-md-12">
-        <?php if($user->add_user == 0) { ?>
+        <?php if($user->add_user == 0 && $user->resp == 1) { ?>
         <form action="" method="post" role="form" data-parsley-validate action=""  style="background-color:white; padding:10px;">
             <div class="row">
                 <div class="col-md-12">
@@ -59,44 +59,44 @@
                             <label class="">Département</label>
                             <select name="departement" class="form-control"  required="">
                                     <option value="">Choisir un département</option>
-                                <option value="Nord" <?php if (isset($_POST['departement']) == 'Nord') {
-                            echo "selected";
-                        } ?> >Nord</option>
-
-                                <option value="Nord-Est" <?php if (isset($_POST['departement']) == 'Nord-Est') {
+                                    <option value="Nord" <?php if (isset($_POST['departement']) == 'Nord') {
                                 echo "selected";
-                            } ?>>Nord-Est</option>
+                            } ?> >Nord</option>
 
-                                <option value="Nord-Ouest" <?php if (isset($_POST['departement']) == 'Nord-Ouest') {
+                                    <option value="Nord-Est" <?php if (isset($_POST['departement']) == 'Nord-Est') {
+                                    echo "selected";
+                                } ?>>Nord-Est</option>
+
+                                    <option value="Nord-Ouest" <?php if (isset($_POST['departement']) == 'Nord-Ouest') {
+                                    echo "selected";
+                                } ?>>Nord-Ouest</option>
+
+                                    <option value="Sud" <?php if (isset($_POST['departement']) == 'Sud') {
                                 echo "selected";
-                            } ?>>Nord-Ouest</option>
+                            } ?>>Sud</option>
 
-                                <option value="Sud" <?php if (isset($_POST['departement']) == 'Sud') {
-                            echo "selected";
-                        } ?>>Sud</option>
+                                    <option value="Sud-Est" <?php if (isset($_POST['departement']) == 'Sud-Est') {
+                                    echo "selected";
+                                } ?>>Sud-Est</option>
 
-                                <option value="Sud-Est" <?php if (isset($_POST['departement']) == 'Sud-Est') {
+                                    <option value="Ouest" <?php if (isset($_POST['departement']) == 'Ouest') {
                                 echo "selected";
-                            } ?>>Sud-Est</option>
+                            } ?>>Ouest</option>
 
-                                <option value="Ouest" <?php if (isset($_POST['departement']) == 'Ouest') {
-                            echo "selected";
-                        } ?>>Ouest</option>
-
-                                <option value="Centre" <?php if (isset($_POST['departement']) == 'Centre') {
-                            echo "selected";
-                        } ?>>Centre</option>
-
-                                <option value="Artibonite" <?php if (isset($_POST['departement']) == 'Artibonite') {
+                                    <option value="Centre" <?php if (isset($_POST['departement']) == 'Centre') {
                                 echo "selected";
-                            } ?>>Artibonite</option>
+                            } ?>>Centre</option>
 
-                                <option value="Nippes" <?php if (isset($_POST['departement']) == 'Nippes') {
-                            echo "selected";
-                        } ?>>Nippes</option>
-                                <option value="Grand-Anse" <?php if (isset($_POST['departement']) == 'Grand-Anse') {
+                                    <option value="Artibonite" <?php if (isset($_POST['departement']) == 'Artibonite') {
+                                    echo "selected";
+                                } ?>>Artibonite</option>
+
+                                    <option value="Nippes" <?php if (isset($_POST['departement']) == 'Nippes') {
                                 echo "selected";
-                            } ?>>Grand-Anse</option>
+                            } ?>>Nippes</option>
+                                    <option value="Grand-Anse" <?php if (isset($_POST['departement']) == 'Grand-Anse') {
+                                    echo "selected";
+                                } ?>>Grand-Anse</option>
                             </select>
                         </div>
 

@@ -10,7 +10,7 @@
 		<h5 class="c-font-uppercase c-font-bold">Bienvenue <?= $_SESSION['nom'] ?></h5>
 		<ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
 			<li><a href="https://chat.whatsapp.com/IniQDzWz7q26VmvH3pEG1j" target="_blank" style="color:black;"> <i class="fa fa-whatsapp"></i> Interegrez le groupe de la formation</a></li>  
-			<?php if($user->add_user==0): ?>
+			<?php if($user->add_user==0 && $user->resp==1 ): ?>
 			<li><a href="<?= $link_menu ?>/ajouter-participant" style="color:black;"> <i class="fa fa-user"></i> Ajouter un participant</a></li>  				
 		<?php endif ?>
 		</ul>
