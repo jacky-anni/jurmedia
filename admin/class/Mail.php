@@ -43,14 +43,13 @@ class Mail {
 
             $to = $user->email; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
             $subject = "Test test";
-            $email_address= "team@jurimedia.org";
             $Msg = "Voici un mwsssage de test";
             $headers = "From: $email_address\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
             $headers .= "Reply-To: $email_address"; 
             mail($to,$email_address,$subject,$Msg,$headers);
             // mail($to,$email_subject,$email_body,$headers);
             echo '<h6 class="alert alert-success">message envoyé avec succès</h6>';
-            return true;  
+            
 
     }
 }
