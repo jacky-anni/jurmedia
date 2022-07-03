@@ -108,7 +108,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
-
+                        <div class="form-group col-md-6">
+                            <label class="">Commune de residence</label>
+                            <input type="text" name="commune" value="<?php if (isset($_POST['commune'])) {
+                                    echo $_POST['commune'];
+                                } ?>" class="form-control" placeholder="Port-Margot" required="">
+                            </div>
                          <div class="form-group col-md-6">
                                 <label class="">Email</label>
                                 <input type="email" name="email" value="<?php if (isset($_POST['email'])) { echo $_POST['email'];} ?>" class="form-control" placeholder="+5094872 0022" required="">
@@ -124,22 +129,16 @@
 
                              <div class="form-group col-md-6">
                                 <label class="">Profession</label>
-                                <input type="text" name="profession" value="<?php if (isset($_POST['profession'])) {echo $_POST['profession'];} ?>" class="form-control" placeholder="+5094872 0022" required="">
+                                <input type="text" name="profession" value="<?php if (isset($_POST['profession'])) {echo $_POST['profession'];} ?>" class="form-control" placeholder="Ing informaticien" required="">
                             </div>
-                        </div>
-                    </div>
 
-                        <div class="col-md-12">
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label class="">Fonction dans l'lorganisation</label>
-                                <input type="text" name="fonction" value="<?php if (isset($_POST['fonction'])) { echo $_POST['fonction']; } ?>" class="form-control" placeholder="+5093349-90" required="">
-                            </div>
+                             <div class="form-group col-md-6">
+                                    <label class="">Fonction dans l'lorganisation</label>
+                                        <input type="text" name="fonction" value="<?php if (isset($_POST['fonction'])) { echo $_POST['fonction'];} ?>" class="form-control" placeholder="President" required="">
+                                    </div>
+                                </div>
                         </div>
                     </div>
-                </div>
-                    <div class="row">
-                </div>
             
             <div class="row">
                 <div class="col-md-12">
