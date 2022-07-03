@@ -12,34 +12,33 @@ class Mail {
         //Load Composer's autoloader
         require 'vendor/autoload.php';
 
-//Create an instance; passing `true` enables exceptions
-        $mail = new PHPMailer(true);
+        require_once "vendor/autoload.php";
+
+//PHPMailer Object
+        $mail = new PHPMailer(true); //Argument true in constructor enables exceptions
+
+//From email address and name
+        $mail->From = "team@jurimedia.org";
+        $mail->FromName = "Jacky Anizaire";
+
+//To address and name
+        $mail->addAddress("anizairejacky@gmail.com", "Recepient Name");
+        $mail->addAddress("anizairejacky@gmail.com"); //Recipient name is optional
+
+//Address to which recipient will reply
+        $mail->addReplyTo("team@jurimedia.org", "Reply");
+//Send HTML or Plain Text email
+        $mail->isHTML(true);
+
+        $mail->Subject = "Subject Text";
+        $mail->Body = "<i>Mail body in HTML</i>";
+        $mail->AltBody = "This is the plain text version of the email content";
+
         try {
-    //Server settings
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host = 'mail.jurimedia.org';                     //Set the SMTP server to send through
-            $mail->SMTPAuth = true;                                   //Enable SMTP authentication
-            $mail->Username = 'team@jurimedia.org';                     //SMTP username
-            $mail->Password = 'jurimedia2022';                               //SMTP password
-            $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
-            $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-    //Recipients
-            $mail->setFrom('team@jurimedia.org', 'Equipe de jurimedia');
-            $mail->addAddress($user->email, $user->prenom);     //Add a recipient
-
-    //Content
-            $mail->isHTML(true);                                  //Set email format to HTML
-            $mail->Subject = $subject;
-            $mail->Body = $msg;
-
             $mail->send();
-            Fonctions::set_flash("$message", 'success');
-            echo "<script>window.location ='$redirect';</script>";
-            // echo 'Message has been sent';
+            echo "Message has been sent successfully";
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            echo "Mailer Error: " . $mail->ErrorInfo;
         }
 	
 
