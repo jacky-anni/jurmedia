@@ -434,13 +434,10 @@ class Participant
 	public static function ajouter_participant($nom, $sexe, $departement, $commune, $email, $telephone, $telephone2, $profession, $fonction) {
 		$participant = Query::affiche('participant', $_SESSION['id_user'], 'id');
 		if($participant){
-
 			if($participant->resp ==1){
-
 				if ($participant->add_user == 0) {
 					$check = Query::affiche('participants_temp', $email, 'email');
 					if(!$check){
-						$token = sha1($participant->email) . sha1($participant->id);
 						$req = class_bdd::connexion_bdd()->prepare("INSERT INTO participants_temp(nom_complet,sexe,departement,commune_residence,email,telephone,telephone_whatsapp,professsion,fonction,nom_organisation,sigle,resp) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
 						$req->execute(array($nom, $sexe, $departement, $commune, $email, $telephone, $telephone2, $profession, $fonction, $participant->nom_organisation, $participant->sigle, 0));
 
