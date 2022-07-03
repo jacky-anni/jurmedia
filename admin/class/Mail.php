@@ -18,15 +18,15 @@ class Mail {
     //Server settings
             $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host = 'formations.jurimedia.org';                     //Set the SMTP server to send through
+            $mail->Host = 'mail.jurimedia.net';                     //Set the SMTP server to send through
             $mail->SMTPAuth = true;                                   //Enable SMTP authentication
-            $mail->Username = 'team@formations.jurimedia.org';                     //SMTP username
-            $mail->Password = 'jurimedia2022';                               //SMTP password
+            $mail->Username = 'jurimedi@jurimedia.net';                     //SMTP username
+            $mail->Password = 'rio$5o03FP';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
             $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-            $mail->setFrom('team@formations.jurimedia.org', 'Equipe de jurimedia');
+            $mail->setFrom('jurimedi@jurimedia.net', 'Equipe de jurimedia');
             $mail->addAddress($user->email, $user->prenom);     //Add a recipient
 
     //Content
