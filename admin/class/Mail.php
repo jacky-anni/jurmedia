@@ -12,7 +12,7 @@ class Mail {
         //Load Composer's autoloader
         require 'vendor/autoload.php';
         //Create an instance; passing `true` enables exceptions
-        $mail = new PHPMailer;
+        $mail = new PHPMailer();
         try {
     //Server settings
             // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
@@ -22,7 +22,7 @@ class Mail {
             $mail->Username = 'team@jurimedia.org';                     //SMTP username
             $mail->Password = 'jurimedia2022';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port = 25;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
             $mail->setFrom('team@jurimedia.org', 'Equipe de jurimedia');
