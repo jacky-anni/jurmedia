@@ -34,8 +34,8 @@ class Mail {
             $mail->Body = $msg;
 
             $mail->send();
-            // Fonctions::set_flash("$message", 'success');
-            // echo "<script>window.location ='$redirect';</script>";
+            Fonctions::set_flash("$message", 'success');
+            echo "<script>window.location ='$redirect';</script>";
             echo 'Message has been sent';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
