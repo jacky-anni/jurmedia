@@ -25,7 +25,7 @@
 					<p>
 						Vous voulez avoir notre application android ? 
 					</p>
-					<a href="<?= $link ?>/app/JURIMEDIA.apk">
+					<a href="<?= $link ?>/app/jurimedia.apk">
 						<button class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square btn-block c-btn-login"> <i class="fa fa-download"></i> Télécharger  </button>
 					</a>
 					

@@ -24,7 +24,8 @@
 						<div class="c-content-title-1">
 							<h3 class="c-font-uppercase c-font-bold">Page Introuvable</h3>
 							<div class="c-line-left"></div>
-							<p>Ask your questions away and let our dedicated customer service help you look through our FAQs to get your questions answered!</p>
+							<p>
+Posez vos questions et laissez notre service client dédié vous aider à parcourir notre FAQ pour obtenir des réponses à vos questions !</p>
 							<form action="#">
 								<div class="input-group input-group-lg c-square">
 							      	<span class="input-group-btn">
