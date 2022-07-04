@@ -36,7 +36,7 @@ switch ($url) {
 		require 'font-end/formations/participants/ajouter-participant.php';
 		break;
 
-	case $url[0] == 'telechargemet':
+	case $url[0] == 'android-app':
 		require 'font-end/app/android.php';
 		break;
 
