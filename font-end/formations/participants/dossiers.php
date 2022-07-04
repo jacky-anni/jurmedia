@@ -5,7 +5,7 @@
 <?php Fonctions::redirect(); ?>
 <!DOCTYPE html>
 <html lang="en"  >
-<title>Formations | <?= $org->sigle ?></title>
+<title>Mes dossiers | <?= $org->sigle ?></title>
 
 <body class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-topbar c-layout-header-topbar-collapse">
 <!-- BEGIN: HEADER -->

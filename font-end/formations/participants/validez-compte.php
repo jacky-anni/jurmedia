@@ -1,5 +1,5 @@
 <?php include('font-end/layout/head.php'); ?>
- <?php head("Validez compte", "Observatoire Citoyen pour l’Institutionnalisation de la Démocratie", ""); ?>
+ <?php head("Validez compte", "JURIMEDIA", ""); ?>
 <!DOCTYPE html>
 <html lang="en"  >
 <?php include('admin/class/Participant.php'); ?>
