@@ -345,7 +345,7 @@ class Participant
 								<td bgcolor='#ffffff' align='left' style='padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 27px;'>
 									<p style='margin: 20px; font-size:17px; line-height:23px;'>
 									Salut <b>$participant->nom_complet </b>,<br/>
-									Nous sommes ravis de vous voir commencer. Tout d'abord, vous devez confirmer votre compte. Appuyez simplement sur le bouton ci-dessous.</p>
+									Nous sommes ravis de vous voir commencer le programme de partage d’expertises et d’expériences de le cadre le de célébration du  21ème anniversaire de JURIMEDIA. </br> Tout d'abord, vous devez confirmer votre compte. Appuyez simplement sur le bouton ci-dessous.</p>
 								</td>
 							</tr>
 							<tr>
