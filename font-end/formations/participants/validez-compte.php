@@ -25,7 +25,7 @@
 					<h2 class="c-feature-16-title c-font-bold c-font-uppercase">Validez votre compte</h2>
 					<h6 id="success1" style="font-size: 14px;"></h5>
 					<p>
-						Entrez l'email que vous avez soumis à jurimedia dans les etapes de l'inscriptions
+						Entrez l'email que vous avez soumis à jurimedia dans les etapes des l'inscriptions
 					</p>
 					<?php include('admin/includes/flash.php'); ?>
 					<form method="POST" role="form" data-parsley-validate action="">
