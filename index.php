@@ -36,6 +36,10 @@ switch ($url) {
 		require 'font-end/formations/participants/ajouter-participant.php';
 		break;
 
+	case $url[0] == 'Telechargemet':
+		require 'font-end/app/android.php';
+		break;
+
 		
 	// reset password
 	case $url[0] == 'reset-password':

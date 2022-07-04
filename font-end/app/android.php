@@ -2,8 +2,7 @@
  <?php head("Validez compte", "Observatoire Citoyen pour l’Institutionnalisation de la Démocratie", ""); ?>
 <!DOCTYPE html>
 <html lang="en"  >
-<?php include('admin/class/Participant.php'); ?>
-<title>Validez compte</title>
+<title>Application android</title>
 <body class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-topbar c-layout-header-topbar-collapse">
 <!-- BEGIN: HEADER -->
 <header class="c-layout-header c-layout-header-4 c-layout-header-default-mobile" data-minimize-offset="80">
@@ -22,25 +21,14 @@
 			<div class="col-md-offset-1 col-md-5 col-xs-12">
 				<div class="c-feature-16-container c-bg-white c-bg-opacity-6">
 					<div class="c-feature-16-line c-theme-bg"></div>
-					<h2 class="c-feature-16-title c-font-bold c-font-uppercase">Validez votre compte</h2>
 					<h6 id="success1" style="font-size: 14px;"></h5>
 					<p>
-						Entrez l'email que vous avez soumis à jurimedia dans les etapes de l'inscriptions
+						Vous voulez avoir notre application android ? 
 					</p>
-					<?php include('admin/includes/flash.php'); ?>
-					<form method="POST" role="form" data-parsley-validate action="">
-						<div class="form-group">
-							<label for="login-email" class="hide">Email</label>
-							<input type="email" name="email" class="form-control input-lg c-square" id="login-email" placeholder="Email" data-parsley-trigger="keypress" required="">
-						</div>						<div class="form-group">
-							<button type="submit" name="valider" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square btn-block c-btn-login"> <i class="fa fa-sign-in"></i> Validez </button>
-						</div>
-
-						 <div class="modal-footer c-no-border">
-							 <p>J'ai déjà validé mon compte </p>             
-							<a href="<?= $link_menu ?>/connexion" class="c-btn-forgot"><b>Connexion</b> </a>
-						</div>
-					</form>
+					<a href="<?= $link ?>/app/JURIMEDIA.apk">
+						<button class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square btn-block c-btn-login"> <i class="fa fa-download"></i> Télécharger  </button>
+					</a>
+					
 				</div>
 			</div>
 		</div>
