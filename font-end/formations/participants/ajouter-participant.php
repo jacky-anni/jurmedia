@@ -1,4 +1,5 @@
 <?php include('font-end/layout/head.php'); ?>
+<?php Fonctions::redirect(); ?>
 <?php include('admin/class/Participant.php'); ?>
 <?php include('admin/class/Formation.php'); ?>
 <!DOCTYPE html>
