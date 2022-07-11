@@ -1,4 +1,4 @@
-<?php include('includes/head.php');?>
+<?php include('includes/head.php'); ?>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
 <!DOCTYPE html>
@@ -43,19 +43,33 @@
                 </tr>
               </thead>
               <tbody>
-              <?php foreach (Query::liste('participants_temp') as $participant): ?>
-              <?php $check = Query::count_prepare('participant', $participant->id ,'id'); ?>
+              <?php foreach (Query::liste('participants_temp') as $participant) : ?>
+              <?php $check = Query::count_prepare('participant', $participant->id, 'id'); ?>
               <tr>
-                <td><?php if (!empty($participant->nom_complet)) {echo $participant->nom_complet;} ?></td>
-                <td><?php if (!empty($participant->email)) {echo $participant->email;} ?></td>
-                <td><?php if (!empty($participant->telephone)) {echo $participant->telephone;} ?></td>
+                <td><?php if (!empty($participant->nom_complet)) {
+                      echo $participant->nom_complet;
+                    } ?></td>
+                <td><?php if (!empty($participant->email)) {
+                      echo $participant->email;
+                    } ?></td>
+                <td><?php if (!empty($participant->telephone)) {
+                      echo $participant->telephone;
+                    } ?></td>
 
                 <td width="15%">
                 <form action="" method="POST">
                 <input type="hidden" name='id' value="<?= $participant->email ?>">
-                <?php if($check){$btn = "success"; $act = "disabled";}else{$btn = "primary"; $act = "";} ?>
+                <?php if ($check) {
+                  $btn = "success";
+                  $act = "disabled";
+                  $ok = "Ok";
+                } else {
+                  $btn = "primary";
+                  $act = "";
+                  $ok = "";
+                } ?>
                   <button type="submit" name="submit" class="btn btn-<?= $btn ?> btn-sm" <?= $act ?> >
-                    Activer
+                    Activer <?= $ok ?>
                   </button>
                 </form>
                 </td>
@@ -69,16 +83,16 @@
         </div>
 
         <?php 
-      
-        if(isset($_POST['submit'])){
+
+        if (isset($_POST['submit'])) {
           $particpants = Query::affiche('participants_temp', $_POST['id'], 'email');
-          if($particpants){
-            Participant::validate($particpants,1);
-          }else{
+          if ($particpants) {
+            Participant::validate($particpants, 1);
+          } else {
             Fonctions::set_flash("Erreur , reesayer", 'danger');
             $link_rediret = $_SERVER['REQUEST_URI'];
           }
-          
+
         }
         ?>
 
