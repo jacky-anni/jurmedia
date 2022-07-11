@@ -66,7 +66,7 @@
                 } else {
                   $btn = "primary";
                   $act = "";
-                  $ok = "";
+                  $ok = "Desac";
                 } ?>
                   <button type="submit" name="submit" class="btn btn-<?= $btn ?> btn-sm" <?= $act ?> >
                     Activer <?= $ok ?>
