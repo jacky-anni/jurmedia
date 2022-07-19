@@ -23,14 +23,14 @@ switch ($url) {
 
 
 		// validez compte
-	case $url[0] == 'validez-compte':
-		require 'font-end/formations/participants/validez-compte.php';
-		break;
+	// case $url[0] == 'validez-compte':
+	// 	require 'font-end/formations/participants/validez-compte.php';
+	// 	break;
 
-			// validez compte
-	case $url[0] == 'validation-de-compte':
-	require 'font-end/formations/participants/validation_compte_email.php';
-	break;
+	// 		// validez compte
+	// case $url[0] == 'validation-de-compte':
+	// require 'font-end/formations/participants/validation_compte_email.php';
+	// break;
 
 	case $url[0] == 'ajouter-participant':
 		require 'font-end/formations/participants/ajouter-participant.php';

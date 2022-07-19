@@ -41,7 +41,8 @@
 						</div>
 
 						 <div class="modal-footer c-no-border">                
-							<a href="javascript:;" data-toggle="modal" data-target="#forget-password-form" data-dismiss="modal" class="c-btn-forgot"><b>Mot de passe oublié ?</b> </a>
+							<a href=""><b>Mot de passe oublié ?</b> </a><br>
+							contactez jurimediahaiti@gmail.com pour changer votre mot de passe
 						</div>
 					</form>
 					

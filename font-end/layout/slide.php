@@ -13,17 +13,16 @@
 					une bonne partie de ses expériences avec une centaine d’associations ou d’organisations 
 					communautaires de base (OCB) 
 					</p>
-					<?php if(!isset($_SESSION['id_user'])) : ?>
+					<?php if (!isset($_SESSION['id_user'])) : ?>
 					<center>
-					<a class=" btn-sm btn btn-primary   c-btn-square" href="<?= $link_menu ?>/validez-compte" style="margin-bottom:10px;"> <i class="fa fa-user"></i> Validez votre compte</a>
 					<a class=" btn-sm btn btn-success  c-btn-square " href="<?= $link_menu ?>/connexion" style="margin-bottom:10px;"> Connexion</a>
 					
 					</center>
 					<?php endif ?>
 
-					<?php if(isset($_SESSION['id_user'])) : ?>
-					<a class="c-feature-15-btn btn c-btn btn-sm btn btn-success  c-btn-square " href="<?= $link_menu ?>/tableau-de-bord"> <i class="fa fa-user"></i> Mon compte</a>
-					<?php endif ?>
+					 <?php if (isset($_SESSION['id_user'])) : ?>
+						<a class="c-feature-15-btn btn c-btn btn-sm btn btn-success  c-btn-square " href="<?= $link_menu ?>/tableau-de-bord"> <i class="fa fa-user"></i> Mon compte</a>
+						<?php endif ?>
 				</div>
 			</div>
 		</div>
