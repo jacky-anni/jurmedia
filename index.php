@@ -42,15 +42,15 @@ switch ($url) {
 
 		
 	// reset password
-	case $url[0] == 'reset-password':
-		require 'font-end/formations/participants/restaurer-password.php';
-		break;
+	// case $url[0] == 'reset-password':
+	// 	require 'font-end/formations/participants/restaurer-password.php';
+	// 	break;
 
 
 		// activation de compte
-	case $url[0] == 'activation':
-		require 'font-end/formations/participants/mail_activation.php';
-		break;
+	// case $url[0] == 'activation':
+	// 	require 'font-end/formations/participants/mail_activation.php';
+	// 	break;
 		// profile
 	case $url[0] == 'profile':
 		require 'font-end/formations/participants/profile.php';
