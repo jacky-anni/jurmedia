@@ -22,6 +22,11 @@ if (!$module) {
 	echo "<script>window.location ='$link_menu/formations';</script>";
 }
 
+if ($note >= 60) {
+			// Fonctions::set_flash("Cette formation n'existe pas",'warning');
+	echo "<script>window.location ='$link_menu/resultat-quiz/$url[1]/$module->id/$quiz1->id';</script>";
+}
+
 
 
 ?>
@@ -49,9 +54,10 @@ if (!$module) {
 </div>
 
 <?php 
-if($formation->fermeture ==0){ ?>
+if ($formation->fermeture == 0) { ?>
 <p class='alert alert-warning' ><b>Ce quiz n'est pas disponible</b></p>
-<?php }else{ ?>
+<?php 
+} else { ?>
 <div class="c-content-box c-size-md">
 	<div class="container">
 			<div class="col-sm-9">
@@ -175,7 +181,8 @@ if($formation->fermeture ==0){ ?>
 
 	</div>
 </div>
-<?php } ?>
+<?php 
+} ?>
 
 <script type="text/javascript">
 	function formSubmit(){
