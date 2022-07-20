@@ -21,6 +21,7 @@ if (!$module) {
 		// Fonctions::set_flash("Cette formation n'existe pas",'warning');
 	echo "<script>window.location ='$link_menu/formations';</script>";
 }
+$note = Quiz::resultat_quiz($_SESSION['id_user'], $module->id);
 
 if ($note >= 60) {
 			// Fonctions::set_flash("Cette formation n'existe pas",'warning');
